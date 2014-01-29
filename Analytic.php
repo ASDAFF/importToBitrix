@@ -93,12 +93,15 @@ class Analytic extends analyticBase
             }
         } else if (!empty($param['check'])) {
             $sql = '
+                SELECT * FROM (
                 SELECT DISTINCT p.checkdate FROM ' . self::$tab['Positions'] . ' p
                 JOIN site_pages sp ON p.page_id=sp.id
                 JOIN site_block sb ON sp.block_id=sb.id
                 WHERE sb.site_id = ?
                 ORDER BY p.checkdate DESC
-                LIMIT ' . $param['check'];
+                LIMIT ' . $param['check'] . '
+                ) AS t ORDER BY checkdate asc
+            ';
             $sql = self::getSql()->prepare($sql);
             $sql->execute(array($this->site_id));
             $this->_byDates = $sql->fetchAll();
