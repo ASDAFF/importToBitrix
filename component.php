@@ -1,6 +1,7 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'bitrix' . DIRECTORY_SEPARATOR . 'components'
     . DIRECTORY_SEPARATOR . 'md' . DIRECTORY_SEPARATOR . 'analytic' . DIRECTORY_SEPARATOR . 'analyticBase.php';
+
 if (file_exists($path)) {
     include_once $path;
 } else {

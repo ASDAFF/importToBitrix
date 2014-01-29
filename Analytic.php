@@ -8,14 +8,34 @@
  */
 class Analytic extends analyticBase
 {
-    /** @var  DateTime */
+    /**
+     * Начальная дата отчета
+     *
+     * @var  DateTime
+     */
     private $begin_date;
-    /** @var  DateTime */
+
+    /**
+     * Конечная дата отчета
+     *
+     * @var  DateTime
+     */
     private $end_date;
-    /** @var  int */
+
+    /**
+     * id сайта
+     *
+     * @var  int
+     */
     private $site_id;
-    /** @var  array */
+
+    /**
+     * Массив с полями выбранного сайта
+     *
+     * @var  array
+     */
     private $site;
+
     /**
      * Сортировка
      *
@@ -26,7 +46,7 @@ class Analytic extends analyticBase
         'asc',
     );
 
-    /** @var bool| */
+    /** @var bool|DateTime[] */
     private $_byDates = false;
 
     /**
@@ -54,7 +74,7 @@ class Analytic extends analyticBase
      *
      * @param array $param
      *
-     * @return array|void
+     * @return array
      */
     public function getData($param = array())
     {

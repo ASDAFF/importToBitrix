@@ -8,6 +8,11 @@
  */
 class Import extends analyticBase
 {
+    /**
+     * Ключ для авторизации при импорте с другово хоста
+     *
+     * @var string
+     */
     static private $token = '111';
 
     /**
@@ -47,7 +52,7 @@ class Import extends analyticBase
     }
 
     /**
-     * Запускает заливку дампа
+     * Запускает заливку дампа. Возвращает количество обработанных строк
      *
      * @param array $param
      *
@@ -110,7 +115,6 @@ class Import extends analyticBase
             return false;
         }
 
-        //insert into update_test (username,host_id) values ('foo',1) on duplicate key update last_modified=N
         $fields = $this->_getFields($table);
         $diff   = array_diff(array_keys($rows[0]), $fields);
         $i      = 0;

@@ -75,14 +75,12 @@ if (!$arResult['auth']) {
             $link .= '&' . $key . '=' . $val;
         }
     }
-    ?>
-    <?
+
     foreach ($arResult['blocks'] as $block) :
         ?>
         <h2><?= $block['name'] ?></h2>
         <? foreach ($block['systems'] as $system) : ?>
         <h3><?= $system['name'] ?></h3>
-
         <div class="seoReport">
             <table class="table">
                 <tr>
@@ -128,7 +126,8 @@ if (!$arResult['auth']) {
                             $prev       = ($pos != '-') ? $page['positions'][$date->format('Y-m-d')]['diff'] : '';
                             $prev_class = ($prev != '-') ? (intval($prev) < 0) ? 'upPos' : 'downPos' : '';
                             ?>
-                            <td class="<?= $class; ?>"><?= $pos; ?><sup class="<?= $prev_class; ?>"><?= $prev; ?></sup>
+                            <td class="<?= $class; ?>"><?= $pos; ?>
+                                <sup class="<?= $prev_class; ?>"><?= $prev; ?></sup>
                             </td>
                         <? endforeach; // position.dates ?>
                     </tr>

@@ -23,6 +23,7 @@ div.seoReport {
     width: 100%;
     overflow-x: auto;
 }
+
 .table {
     width: 98%;
     border-collapse: collapse;
@@ -118,13 +119,16 @@ div.seoReport {
     color: red !important;
     font-weight: bold;
 }
-.table sup{
+
+.table sup {
     width: 14px;
     display: inline-block;
 }
-.table sup.upPos{
+
+.table sup.upPos {
     color: #008000;
 }
-.table sup.downPos{
+
+.table sup.downPos {
     color: red;
 }
