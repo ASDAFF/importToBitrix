@@ -112,7 +112,7 @@ if (!$arResult['auth']) {
                         </td>
                         <? foreach ($arResult['dates'] as $date) : ?>
                             <?
-                            $pos = (!empty($page['positions'][$date->format('Y-m-d')])) ? $page['positions'][$date->format('Y-m-d')]['position'] : '-';
+                            $pos = (!empty($page['positions'][$date->format('Y-m-d')]['position'])) ? $page['positions'][$date->format('Y-m-d')]['position'] : '-';
                             if (intval($pos) <= 10 && $pos != '-') {
                                 $class = 'high';
                             } else if (intval($pos) <= 50 && $pos != '-') {
