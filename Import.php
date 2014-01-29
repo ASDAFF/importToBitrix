@@ -13,7 +13,7 @@ class Import extends analyticBase
      *
      * @var string
      */
-    static private $token = '111';
+    static private $token = '9GnQev';
 
     /**
      * Возвращает md5 токена
