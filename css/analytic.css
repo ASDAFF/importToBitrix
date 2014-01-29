@@ -1,0 +1,130 @@
+h2 {
+    color: #0e76bc;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h3 {
+    color: #0e76bc;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.top_checkbox {
+    float: right;
+    font-size: 13px;
+}
+
+div.seoReport {
+    width: 100%;
+    overflow-x: auto;
+}
+.table {
+    width: 98%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 13px;
+    font-family: 'Arial', 'Geneva', 'Verdana', 'Helvetica', serif;
+    margin: 0 auto 40px;
+}
+
+.table th, .table td {
+    padding: 4px 0 4px 8px;
+    text-align: center;
+}
+
+.table td.name {
+    text-align: left;
+}
+
+.table th {
+    color: #ffffff;
+    background: #61839a;
+}
+
+.table td {
+    height: 22px;
+    border: 1px solid #ffffff;
+}
+
+.table td.white, .table tr:nth-child(odd) td {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.table td:first-child {
+    background-color: #ffffff !important;
+    color: #0E76BC !important;
+    padding: 5px;
+}
+
+.table td.gray, .table tr:nth-child(even) td {
+    background-color: #E9E9EA;
+    color: #777777;
+}
+
+.table tr:hover td {
+    background-color: rgba(255, 127, 127, 0.3);
+}
+
+.table td a {
+    font-size: 13px;
+    color: #0E76BC;
+    text-decoration: none;
+}
+
+.table td a:hover {
+    color: #3097dc;
+    border-bottom: 1px dashed #0E76BC;
+}
+
+.table th a {
+    width: 12px;
+    height: 10px;
+    display: inline-block;
+}
+
+.table th a.sortAsc {
+    background: url("../images/arrow-up-white.gif") no-repeat;
+}
+
+.table th a.sortDesc {
+    background: url("../images/arrow-down-white.gif") no-repeat;
+}
+
+.table tr.top_10 td, td.top_10 {
+    background-color: rgba(0, 255, 0, 0.5) !important;
+    font-weight: bold;
+    color: #000000;
+}
+
+.table tr.top_50 td, td.top_50 {
+    background-color: rgba(255, 255, 0, 0.5) !important;
+    font-weight: bold;
+    color: #000000;
+}
+
+.table tr.top_100 td, td.top_100 {
+    background-color: rgba(255, 0, 0, 0.5) !important;
+    font-weight: bold;
+    color: #000000;
+}
+
+.table td.top_10_inOrOut {
+    color: red !important;
+    font-weight: bold;
+}
+.table sup{
+    width: 14px;
+    display: inline-block;
+}
+.table sup.upPos{
+    color: #008000;
+}
+.table sup.downPos{
+    color: red;
+}
