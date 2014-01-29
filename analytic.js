@@ -103,6 +103,8 @@ $(function () {
             $("#end").val(tmp[1]);
             $("#fields_period").show(0);
         }
+    } else {
+        $('#Period option:first').attr('selected', 'selected');
     }
 
     $.datepicker.setDefaults($.extend($.datepicker.regional["ru"]));

@@ -113,7 +113,7 @@ class Analytic extends analyticBase
         } else if (empty($param['period'])) {
             $this->end_date   = new DateTime();
             $this->begin_date = new DateTime();
-            $this->begin_date->sub(new DateInterval('P10D'));
+            $this->begin_date->sub(new DateInterval('P7D'));
         } else {
             $m = array();
             preg_match_all('/\d{1,2}.\d{1,2}.\d{4}/', $param['period'], $m);
