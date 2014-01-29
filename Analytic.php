@@ -98,11 +98,10 @@ class Analytic extends analyticBase
                 JOIN site_block sb ON sp.block_id=sb.id
                 WHERE sb.site_id = ?
                 ORDER BY p.checkdate DESC
-                LIMIT ?
-            ';
+                LIMIT ' . $param['check'];
             $sql = self::getSql()->prepare($sql);
-            $sql->execute(array($this->site_id, $param['check']));
-            $this->_byDates = $sql->fetchAll(PDO::FETCH_ASSOC);
+            $sql->execute(array($this->site_id));
+            $this->_byDates = $sql->fetchAll();
             if (count($this->_byDates)) {
                 foreach ($this->_byDates as $key => $row) {
                     $dates[]              = new DateTime($row['checkdate']);
