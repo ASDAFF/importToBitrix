@@ -347,4 +347,83 @@ class Analytic extends analyticBase
 
         return $top;
     }
+
+    public function getCsv($arResult)
+    {
+        $months = array(
+            1  => 'Январь',
+            2  => 'Февраль',
+            3  => 'Март',
+            4  => 'Апрель',
+            5  => 'Май',
+            6  => 'Июнь',
+            7  => 'Июль',
+            8  => 'Август',
+            9  => 'Сентябрь',
+            10 => 'Октябрь',
+            11 => 'Ноябрь',
+            12 => 'Декабрь',
+        );
+
+        $csv = array();
+        foreach ($arResult['blocks'] as $block) :
+            $csv[] = array('', $block['name']);
+            foreach ($block['systems'] as $system) :
+                $csv[] = array('', $system['name']);
+                $tmp   = array('№', $months[$arResult['dates'][0]->format('n')]);
+                foreach ($arResult['dates'] as $date) :
+                    $tmp[] = $date->format('d.m.Y');
+                endforeach; // dates
+
+                $csv[] = $tmp;
+                $i     = 1;
+                foreach ($system['pages'] as $page) :
+                    $tmp   = array();
+                    $tmp[] = $i;
+                    $tmp[] = $page['name'];
+
+                    foreach ($arResult['dates'] as $date) :
+                        $tmp[] = (!empty($page['positions'][$date->format('Y-m-d')]['position'])) ? $page['positions'][$date->format('Y-m-d')]['position'] : '-';
+                    endforeach; // position.dates
+
+                    $i++;
+                    $csv[] = $tmp;
+                endforeach; // pages
+
+                $top_row = array(10, 50, 100);
+                foreach ($top_row as $top) :
+                    $tmp   = array();
+                    $tmp[] = 'ТОП-' . $top;
+                    foreach ($arResult['dates'] as $date) :
+                        $tmp[] = $system['top'][$date->format("Y-m-d")][$top];
+                    endforeach; // top.date
+                    $csv[] = $tmp;
+                endforeach; // top_row
+            endforeach; // system
+        endforeach; // blocks
+
+        $file = fopen('tmp.csv', 'w');
+        foreach ($csv as $line) {
+            $this->_csvPutStr($file, $line);
+        }
+
+        header("Content-type: application/csv");
+        header("Content-Disposition: attachment; filename=report.csv");
+        echo $a = file_get_contents('tmp.csv');
+
+        exit;
+    }
+
+    private function _csvPutStr($fh, $arr)
+    {
+        if (!is_array($arr)) {
+            $arr = array($arr);
+        }
+
+        foreach ($arr as $key => $str) {
+            $arr[$key] = mb_convert_encoding($str, 'windows-1251');
+        }
+
+        fputcsv($fh, $arr, ';');
+    }
 }

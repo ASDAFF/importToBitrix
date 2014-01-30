@@ -150,5 +150,6 @@ if (!$arResult['auth']) {
     <? endforeach; // blocks
     }
     ?>
+    <a class="csv" href="<?=$link?>&toCsv=1">Сохранить отчет в CSV</a>
 </div>
 <div style="width: 100%;clear: both;"></div>

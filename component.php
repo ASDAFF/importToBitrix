@@ -28,6 +28,11 @@ if (isset($arParams['import'])) {
         $arResult['auth'] = false;
     }
 
-    $this->IncludeComponentTemplate($componentPage);
+    if ($_GET['toCsv'] == "1" && !empty($arResult['blocks']) && isset($analytic)) {
+        $APPLICATION->RestartBuffer();
+        $analytic->getCsv($arResult);
+    } else {
+        $this->IncludeComponentTemplate($componentPage);
+    }
 }
 ?>
