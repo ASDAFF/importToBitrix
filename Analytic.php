@@ -409,7 +409,8 @@ class Analytic extends analyticBase
 
         header("Content-type: application/csv");
         header("Content-Disposition: attachment; filename=report.csv");
-        echo $a = file_get_contents('tmp.csv');
+        echo file_get_contents('tmp.csv');
+        unlink('tmp.csv');
 
         exit;
     }
