@@ -65,23 +65,21 @@ function redirect(tmp_link, select) {
     window.location.href = tmp_link;
 }
 
-function getTdForChangeInTop(up) {
-    var tds = [];
+function getTdForChangeInTop() {
+    var tds = {'up': [], 'down': []};
     var tmp = $('.high').add('.mid');
+    var prev = 0;
     for (var i = 0; i < tmp.length; i++) {
         var curr = parseInt($(tmp[i]).html());
-        var prev = parseInt($(tmp[i]).prev().html());
-        var next = parseInt($(tmp[i]).next().html());
-        if (curr <= 10 || prev <= 10 || next <= 10) {
-            if ((prev != curr) || curr != next) {
-                if (up && curr <= 10) {
-                    tds.push(tmp[i]);
-                }
+        var change = parseInt($('sup', $(tmp[i])).html());
 
-                if (!up && curr > 10) {
-                    tds.push(tmp[i]);
-                }
-            }
+        prev = (curr - change);
+        if (curr <= 10 && prev > 10) {
+            tds.up.push(tmp[i]);
+        }
+
+        if (curr > 10 && prev <= 10) {
+            tds.down.push(tmp[i]);
         }
     }
 
@@ -161,16 +159,14 @@ $(function () {
     $('.top_checkbox input[value=4]').on('change', function () {
         if (this.checked) {
             var tds = getTdForChangeInTop(true);
-            $(tds).addClass('top_10_inOrOut upPos');
-            var tds = getTdForChangeInTop(false);
-            $(tds).addClass('top_10_inOrOut downPos');
+            $(tds.up).addClass('top_10_inOrOut upPos');
+            $(tds.down).addClass('top_10_inOrOut downPos');
         } else {
             var tds = getTdForChangeInTop(true);
-            $(tds).removeClass('top_10_inOrOut');
-            $(tds).removeClass('upPos');
-            var tds = getTdForChangeInTop(false);
-            $(tds).removeClass('top_10_inOrOut');
-            $(tds).removeClass('downPos');
+            $(tds.up).removeClass('top_10_inOrOut');
+            $(tds.up).removeClass('upPos');
+            $(tds.down).removeClass('top_10_inOrOut');
+            $(tds.down).removeClass('downPos');
         }
     });
 });
