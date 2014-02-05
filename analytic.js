@@ -65,16 +65,22 @@ function redirect(tmp_link, select) {
     window.location.href = tmp_link;
 }
 
-function getTdForChangeInTop() {
+function getTdForChangeInTop(up) {
     var tds = [];
-    var tmp = $('.high');
+    var tmp = $('.high').add('.mid');
     for (var i = 0; i < tmp.length; i++) {
         var curr = parseInt($(tmp[i]).html());
         var prev = parseInt($(tmp[i]).prev().html());
         var next = parseInt($(tmp[i]).next().html());
         if (curr <= 10 || prev <= 10 || next <= 10) {
             if ((prev != curr) || curr != next) {
-                tds.push(tmp[i]);
+                if (up && curr <= 10) {
+                    tds.push(tmp[i]);
+                }
+
+                if (!up && curr > 10) {
+                    tds.push(tmp[i]);
+                }
             }
         }
     }
@@ -153,11 +159,18 @@ $(function () {
         }
     });
     $('.top_checkbox input[value=4]').on('change', function () {
-        var tds = getTdForChangeInTop();
         if (this.checked) {
-            $(tds).addClass('top_10_inOrOut');
+            var tds = getTdForChangeInTop(true);
+            $(tds).addClass('top_10_inOrOut upPos');
+            var tds = getTdForChangeInTop(false);
+            $(tds).addClass('top_10_inOrOut downPos');
         } else {
+            var tds = getTdForChangeInTop(true);
             $(tds).removeClass('top_10_inOrOut');
+            $(tds).removeClass('upPos');
+            var tds = getTdForChangeInTop(false);
+            $(tds).removeClass('top_10_inOrOut');
+            $(tds).removeClass('downPos');
         }
     });
 });

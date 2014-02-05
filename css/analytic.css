@@ -116,8 +116,19 @@ div.seoReport {
 }
 
 .table td.top_10_inOrOut {
-    color: red !important;
     font-weight: bold;
+}
+
+.table td.top_10_inOrOut .upPos,.table td.top_10_inOrOut .downPos{
+    color: #000000;
+}
+
+.table td.upPos {
+    background-color: #008000 !important;
+}
+
+.table td.downPos{
+    background-color: red !important;
 }
 
 .table sup {
