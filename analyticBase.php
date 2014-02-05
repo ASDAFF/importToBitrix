@@ -28,6 +28,36 @@ class analyticBase
     );
 
     /**
+     * Функция для вывода названия ком паниии
+     *
+     * В шаблон вставляется:
+     * <pre>
+     * $APPLICATION->IncludeComponent("bitrix:main.include", "", Array(
+     *      "AREA_FILE_SHOW"      => "file",
+     *      "PATH"                => '/bitrix/components/md/analytic/companyName.php',
+     *      "AREA_FILE_SUFFIX"    => "inc",
+     *      "AREA_FILE_RECURSIVE" => "Y",
+     *      "EDIT_TEMPLATE"       => "standard.php"
+     *      )
+     * );
+     * </pre>
+     *
+     * @return string
+     */
+    public static function getCompanyName()
+    {
+        $name = '';
+        if (!empty($_GET['project'])) {
+            $sql = 'select domain from ' . self::$tab['Site'] . ' where id = ?';
+            $sql = self::getSql()->prepare($sql);
+            $sql->execute(array($_GET['project']));
+            $name = $sql->fetchColumn();
+        }
+
+        return $name;
+    }
+
+    /**
      * Возвращает класс подключения к БД
      *
      * @throws Exception
