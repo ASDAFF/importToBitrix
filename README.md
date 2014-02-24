@@ -18,6 +18,7 @@ $APPLICATION->IncludeComponent("md:analytic", "", array());
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
 
 import.php (для синхронизации)
+
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 ?>
