@@ -4,7 +4,9 @@ importToBitrix
 Импорт сео статистики в битрикс
 
 в папку доступную из вне необходимо положить 2 файла
+
 index.php (для просмотра отчетов)
+
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Аналитика");
